@@ -1,24 +1,3 @@
-//-------------------------------------------------------------------------------------------------------------------------------------------
-// Assignment 4 
-// PART II
-// Written by: Farnaz Zaveh, ID: 40032389
-// For COMP 249-S - Winter 2021 
-// 
-// This program design and implement a TV Guide which will determine if a user can watch a specific show
-// based on shows he/she is currently watching. 
-// The two input files are TVGuide.txt containing information about various TV shows, 
-// and Interests.txt which contains information about the shows a user is interested in. 
-// The program will parse these files to extract TV shows information and 
-// will produce an outcome for each of the show a user wants to watch. 
-//----------------------------------------------------------------------------------------------------------------------------------------------
-/**
- * Name and ID: Farnaz Zaveh - 40032389
- * Assignment# 4, PART II
- * COMP249
- * Due Date April 24th, 2021
- */
-package partII;
-
 import java.io.File;
 //import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -38,10 +17,10 @@ public class ProcessWishlist {
 		//initialize the scanner object
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter the TV Guide file path");              //prompt and read the file path
+		System.out.println("Enter the TV Guide file path");              
 		String tVGuideFilePath = sc.nextLine();                          
 		
-		System.out.println("Enter the Interest file path");              //prompt and read the file path
+		System.out.println("Enter the Interest file path");              
 		String interestFilePath = sc.nextLine();
 		
 		//Open the TVGuide.txt file and read its contents line by line
@@ -78,7 +57,7 @@ public class ProcessWishlist {
 			scInterest.nextLine();
 			while(scInterest.hasNextLine()){                    //for watching
 				String currentLine = scInterest.nextLine();
-				if(!currentLine.equalsIgnoreCase("wishlist")){  //"not wishlist" == watching list
+				if(!currentLine.equalsIgnoreCase("wishlist")){  
 					watchingList.add(currentLine.trim());       //add it to watchingList
 				}else
 					break;
@@ -122,9 +101,9 @@ public class ProcessWishlist {
 					System.out.println("User can watch show "+wishListShow.getShowID()+" as he/she is not watching anything else during that time");
 				}else{
 					if(wishListShow.isOnSameTime(watchingShow).equalsIgnoreCase("Some Overlap")){
-						System.out.println("User can’t watch show "+wishListShow.getShowID()+" as he/she is not finished with a show he/she is watching");
+						System.out.println("User canâ€™t watch show "+wishListShow.getShowID()+" as he/she is not finished with a show he/she is watching");
 					}else if(wishListShow.isOnSameTime(watchingShow).equalsIgnoreCase("Same time")){
-						System.out.println("User can’t watch show "+wishListShow.getShowID()+" as he/she will begin another show at the same time");
+						System.out.println("User canâ€™t watch show "+wishListShow.getShowID()+" as he/she will begin another show at the same time");
 					}
 				}
 			} //end of wish list processing
@@ -196,11 +175,7 @@ public class ProcessWishlist {
 		}
 	}
 	
-	/**
-	 * This method displays the created list
-	 * @param list
-	 */
-	public static void displayLinkedList(ShowList list) {
+		public static void displayLinkedList(ShowList list) {
 		ShowNode node = list.getHead();
 		System.out.print(node.getDataTVShow().getShowID());
 		node = node.getNextShowNode();
