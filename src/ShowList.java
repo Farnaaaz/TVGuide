@@ -1,32 +1,9 @@
-//-------------------------------------------------------------------------------------------------------------------------------------------
-// Assignment 4 
-// PART II
-// Written by: Farnaz Zaveh, ID: 40032389
-// For COMP 249-S - Winter 2021 
-// 
-// This program design and implement a TV Guide which will determine if a user can watch a specific show
-// based on shows he/she is currently watching. 
-// The two input files are TVGuide.txt containing information about various TV shows, 
-// and Interests.txt which contains information about the shows a user is interested in. 
-// The program will parse these files to extract TV shows information and 
-// will produce an outcome for each of the show a user wants to watch. 
-//----------------------------------------------------------------------------------------------------------------------------------------------
-/**
- * Name and ID: Farnaz Zaveh - 40032389
- * Assignment# 4, PART II
- * COMP249
- * Due Date April 24th, 2021
- */
-package partII;
-
 import java.util.NoSuchElementException;
 
 public class ShowList 
 {	
-	//inner class
 	public class ShowNode implements Cloneable
 	{	
-		//initializing attributes
 		private TVShow dataTVShow;     //ShowNode object
 		private ShowNode nextShowNode; //pointer to ShowNode object
 		
@@ -40,7 +17,6 @@ public class ShowList
 		
 		/**
 		  * parameterized constructor 
-		  * @param TVShow and ShowNode objects
 		  */
 		public ShowNode(TVShow show, ShowNode objShNode){
 			this.dataTVShow = show;
@@ -49,7 +25,6 @@ public class ShowList
 		
 		/**
 		  * copy constructor 
-		  * @param ShowNode object
 		  */
 		public ShowNode(ShowNode objShNode){
 			this.dataTVShow = new TVShow(objShNode.dataTVShow.getShowID(),
@@ -73,24 +48,15 @@ public class ShowList
 			return cloneShowNode;
 		}
 
-		/*1)This accessor method may result in privacy leak
-		  2)It returns a copy of reference to the private composite attribute dataTVShow 
-		    which can be used to modify it from outside this class, resulting in 
-		    inconsistency*/
 		public TVShow getDataTVShow() {
 			return dataTVShow;
 		}
 		
-		//mutator method
 		public void setDataTVShow(TVShow objTVShow) {
 			this.dataTVShow = objTVShow;
 		}
 
-		/*1)This accessor method may result in privacy leak
-		  2)It returns a copy of reference to the private composite attribute nextShowNode 
-		    which can be used to modify it from outside this class, resulting in 
-		    inconsistency*/
-		public ShowNode getNextShowNode() {
+			public ShowNode getNextShowNode() {
 			return nextShowNode;
 		}
 		
@@ -100,7 +66,6 @@ public class ShowList
 		}
 	}//end of inner class
 	
-	//initializing attributes
 	private ShowNode head;
 	private int size;
 	
@@ -114,7 +79,6 @@ public class ShowList
 	
 	/**
 	  * copy constructor
-	  * that accepts a ShowList object and creates a copy of it
 	  */
 	public ShowList(ShowList s_list){
 		try 
@@ -145,12 +109,6 @@ public class ShowList
 		this.size = s_list.size;
 	}
 	
-	/**
-	 * This method accepts one parameter(a TVShow object) 
-	 * creates a node with that passed object,
-	 * then inserts this node at the head of the list
-	 * @param TVShow object
-	 */
 	public void addToStart(TVShow tvShow)
 	{
 		ShowNode newNode = new ShowNode(); //create a new ShowNode
@@ -168,15 +126,6 @@ public class ShowList
 		this.size++; 
 	}
 	
-	/**
-	 * This method accepts two parameters
-	 * @param TVShow object
-	 * @param (int) index 
-	 * [a valid index must have a value between 0 and size-1]
-	 * If the index is valid, the method creates a node with the passed TVShow object 
-	 * and inserts this node at the given index.
-	 * If the index is not valid the method throw a NoSuchElementException and terminate the program
-	 */
 	public void insertAtIndex(TVShow tvShow, int index){
 		if(index < 0 || index > (this.size-1)){ //if index not valid 
 			try
@@ -211,12 +160,6 @@ public class ShowList
 		}
 	}
 	
-	/**
-	 * This method accepts one integer parameter representing an index
-	 * @param index
-	 * If the index is valid, the method will delete the node pointed by that index, from the list
-	 * If the index is not valid the method throw a NoSuchElementException and terminate the program
-	 */
 	public void deleteFromIndex(int index){
 		if(index < 0 || index > (this.size-1)){ //if index not valid 
 			try
@@ -239,21 +182,13 @@ public class ShowList
 			this.size--; //update the size 
 		}
 	}
-	/**
-	 * This method deletes the first node in the list
-	 */
+	
 	public void deleteFromStart(){
 		this.head = this.head.nextShowNode;
 		this.size--;
 	}
 	
-	/**
-	 * This method accepts two parameters
-	 * @param TVShow object
-	 * @param index
-	 * If the index is not valid, the method returns
-	 * otherwise, the object in the node at the passed index is to be replaced by the passed object
-	 */
+
 	public void replaceAtIndex(TVShow tvShowReplacement, int index){
 		if(index < 0 && index > (this.size-1)){ //if index not valid return
 			return;
@@ -269,35 +204,23 @@ public class ShowList
 			}
 		}
 	}
-	
-	/*1)This accessor method may result in privacy leak
-	  2)It returns a copy of reference to the private attribute head 
-	    which can be used to modify it from outside this class, resulting in 
-	    inconsistency*/
+
 	public ShowNode getHead() {
 		return head;
 	}
 	
-	//mutator 
 	public void setHead(ShowNode head) {
 		this.head = head;
 	}
 
-	/*1)This accessor method may result in privacy leak
-	  2)It returns a copy of reference to the private attribute size 
-	    which can be used to modify it from outside this class, resulting in 
-	    inconsistency*/
 	public int getSize() {
 		return size;
 	}
 	
-	//mutator
 	public void setSize(int size) {
 		this.size = size;
 	}
 	
-	//this method may cause privacy leak because it returns a node.
-	//it can be solved by returning a clone of that node.
 	/**
 	 * @param s_ID
 	 * @param showIndex
