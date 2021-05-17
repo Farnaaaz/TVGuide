@@ -1,29 +1,7 @@
-//-------------------------------------------------------------------------------------------------------------------------------------------
-// Assignment 4 
-// PART II
-// Written by: Farnaz Zaveh, ID: 40032389
-// For COMP 249-S - Winter 2021 
-// 
-// This program design and implement a TV Guide which will determine if a user can watch a specific show
-// based on shows he/she is currently watching. 
-// The two input files are TVGuide.txt containing information about various TV shows, 
-// and Interests.txt which contains information about the shows a user is interested in. 
-// The program will parse these files to extract TV shows information and 
-// will produce an outcome for each of the show a user wants to watch.
-//----------------------------------------------------------------------------------------------------------------------------------------------
-/**
- * Name and ID: Farnaz Zaveh - 40032389
- * Assignment# 4, PART II
- * COMP249
- * Due Date April 24th, 2021
- */
-package partII;
-
 import java.util.Scanner;
 
 public class TVShow implements Cloneable, Watchable{
 	
-	//initializing attributes
 	private String showID;
 	private String showName;
 	private double startTime;
@@ -32,7 +10,6 @@ public class TVShow implements Cloneable, Watchable{
 	 
 	/**
 	  * parameterized constructor 
-	  * @param (String) s_id, (String) s_name, (double) start_time, (double) end_time
 	  */
 	public TVShow (String s_id, String s_name, double start_time, double end_time) {
 		this.showID = s_id;
@@ -72,11 +49,7 @@ public class TVShow implements Cloneable, Watchable{
 		return cloneTVShow;
 	}
 	
-	/**
-	 * @Override equals method
-	 * return true if shows have the same name, start time and and end time
-	 * (Two shows are equal if they have the same attributes, with the exception of the showID)
-	*/
+	
 	public boolean equals (Object obj) {
 		if(this == obj) // returns true if they have the same reference
 			return true;
@@ -92,72 +65,45 @@ public class TVShow implements Cloneable, Watchable{
 	}
 
 	/**
-	 * @Override toString method
+	 * @Override toString 
 	*/
 	public String toString() {
 		return "ID = "+this.showID+"\nName = "+ this.showName+"\n Start-Time = "+this.startTime+"\nEnd-Time = "+ this.endTime;
 	}
 	
-	/**
-	  * accessor method
-	  * @return (String) showID
-	  */
+	
 	public String getShowID() {
 		return showID;
 	}
 	
-	/**
-	  * mutator method
-	  * @param (String) showID
-	  */
+	
 	public void setShowID(String showID) {
 		this.showID = showID;
 	}
 	
-	/**
-	  * accessor method
-	  * @return (String) showName
-	  */
+	
 	public String getShowName() {
 		return showName;
 	}
 	
-	/**
-	  * mutator method
-	  * @param (String) startTime
-	  */
+	
 	public void setShowName(String showName) {
 		this.showName = showName;
 	}
 	
-	/**
-	  * accessor method
-	  * @return (double) to date
-	  */
+	
 	public double getStartTime() {
 		return startTime;
 	}
 	
-	/**
-	  * mutator method
-	  * @param (double) startTime
-	  */
 	public void setStartTime(double startTime) {
 		this.startTime = startTime;
 	}
 	
-	/**
-	  * accessor method
-	  * @return (double) endTime
-	  */
 	public double getEndTime() {
 		return endTime;
 	}
 	
-	/**
-	  * mutator method
-	  * @param (double) endTime
-	  */
 	public void setEndTime(double endTime) {
 		this.endTime = endTime;
 	}
